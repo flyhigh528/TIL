@@ -1,3 +1,3 @@
-# TIL
+# Today I Learned
 
-# 잘되나요 깃?
+# MySQL, Python, EcoSystem 뽀시기!
