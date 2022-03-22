@@ -127,28 +127,28 @@ innodb_ft_server_stopword_table=데이터베이스명/테이블명
    <pre><code> partition by RANGE (컬럼1) (
                    Partition 조건명1 VALUES THAN (숫자조건),
                    partition 조건명2 values less then MAXVALUE
-                 );</pre></code> 
+                 );</code> </pre>
   - List : IN 조건을 이용하여 파티셔닝 (INT형)
    <pre><code> partition by LIST (컬럼1) (
                    Partition 조건명1 VALUES IN (조건1, 조건2, ...),
                    Partition 조건명2 VALUES IN (조건3, 조건4, ...)
-                 );</pre></code> 
+                 );</code> </pre>
   - Range Column : 여러 컬럼을 기준으로 잡아 범위조건으로 파티셔닝 (string, date, datetime 가능)
    <pre><code> partition by range columns (컬럼1,컬럼2) (
                    Partition 조건명 VALUES LESS THAN (조건1, 조건2),
                    Partition 조건명 VALUES LESS THAN (조건3, 조건4)
-                 );</pre></code> 
+                 );</code> </pre>
   - List Column : 여러 컬럼을 기준으로 잡아 IN 조건으로 파티셔닝 (string, date, datetime 가능)
    <pre><code> partition by List columns (컬럼1,컬럼2) (
                    Partition 조건명 VALUES IN (조건1, 조건2),
                    Partition 조건명 VALUES IN (조건3, 조건4)
-                 );</pre></code> 
+                 );</code> </pre>
   - Hash : 해시 함수를 이용해 데이터를 고르게 분포되도록 하기 위해 사용
    <pre><code> PARTITION BY HASH(컬럼명)
-               PARTITIONS 나눌갯수;</pre></code> 
+               PARTITIONS 나눌갯수;</code> </pre>
   - Key : 지정된 키 컬럼을 기준으로 파티셔닝, 여러 컬럼 기준으로 파티셔닝이 가능
    <pre><code> PARTITION BY HASH(컬럼명)
-               PARTITIONS 나눌갯수;</pre></code> 
+               PARTITIONS 나눌갯수;</code> </pre>
 
 - 등록 Partition 조회
 <pre><code> select * from information_schema.partitions
