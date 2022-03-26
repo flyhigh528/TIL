@@ -26,7 +26,7 @@ mysql>drop database <데이터베이스명>;
 ```
 
 ### User + Host 생성하기
-- User 생성 (<host> : localhost 또는 %(ALL) 또는 IP)
+- User 생성 (<host> : localhost 또는 %(ALL) 또는 IP) 
 ```
 mysql>create user <user-name>@'<host>' identified by '<password>';
 ```
@@ -36,6 +36,7 @@ mysql>use mysql;
 mysql>select host, user from user;
 ```
 - 권한 부여
+  - host별로 따로 권한부여가 가능, 분리하여 권한 부여
 ```
 mysql>grant all privileges on *.* to '<user-name>'@'<host>;
 ```
