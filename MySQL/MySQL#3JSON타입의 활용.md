@@ -52,37 +52,74 @@ MySQL은 JSON 데이터를 처리하는 쿼리를 쉽게 사용하기 위한 **J
 SELECT * FROM users WHERE info->'$.name' = 'yundream';
 
 SELECT * FROM users WHERE json_extract(info, '$.name') = 'yundream';
+
+-- "(쌍따옴표)를 뺀 결과값 조회
+SELECT * FROM users WHERE info->>'$.name' = 'yundream';
+
+SELECT * FROM users WHERE json_unquote(json_extract(info, '$.name')) = 'yundream';
 ```
 #
 ## JSON 함수들 8.0기준 (https://dev.mysql.com/doc/refman/8.0/en/json-function-reference.html)
-| 함수명 | 설명 |
-| :----: |  ----------------------------|
-|JSON_VALID() |JSON 데이터의 유효성 검사|
-|JSON_PRETTY() |들여쓰기를 포함해 보기 좋게 JSON 데이터 출력|
-|JSON_OBJECT() |문자열 형태가 아닌 key, value 쌍으로 JSON 데이터 만들기|
-|JSON_ARRAY() | JSON 데이터를 배열(Array) 형태로 작성 및 변환|
-|JSON_EXTRACT() | 인라인 패스(->)와 같이 특정 값만 뽑아 추출|
-|JSON_VALUE() |특정 값 추출, 출력 타입 정의 가능||
-|JSON_QUOTE() | 특정 값 추출시 값의 좌우에 큰따옴표 붙여서 출력|
-|JSON_UNQUOTE() | 특정 값 추출시 값의 좌우에 출력되는 큰따옴표 제거|
-|JSON_LENGTH() | JSON 데이터의 키 개수|
-|JSON_DEPTH() | JSON 데이터의 깊이(계층)|
-|JSON_KEYS() | JSON 데이터의 key들만 추출|
-|JSON_TYPE() | JSON 데이터의 데이터 타입 출력|
-|JSON_SEARCH() |특정값으로 JSON 패스(위치) 검색|
-|JSON_CONTAINS() |JSON 데이터에 특정 값의 존재 여부 확인|
-|JSON_REPLACE() |JSON 데이터의 값 부분 변경|
-|JSON_INSERT() | JSON 데이터에 특정 key, value 쌍을 추가|
-|JSON_SET() |JSON 데이터에서 특정 key에 해당되는 값만 변경|
-|JSON_REMOVE() |JSON 데이터의 특정 key, value 제거|
-|JSON_MERGE() |기존 JSON 데이터에 값 추가, MySQL 8에서 deprecated됨
-|JSON_MERGE_PRESERVE() | JSON 데이터 특정 위치의 값 변경(기존 값 유지)|
-|JSON_MERGE_PATCH() | JSON 데이터 특정 위치의 값 변경(기존 값 대치)|
-|JSON_TABLE() | JSON 데이터를 테이블 형태로 정의|
-|JSON_ARRAYAGG() |전체 JSON 데이터를 취합(통합)하여 배열로 출력|
-|JSON_OBJECTAGG() | JSON 데이터를 취합(통합)하여 Object 형태로 출력|
-|JSON_STORAGE_SIZE() | JSON 데이터가 차지하는 데이터 크기|
-|JSON_STORAGE_FREE() | JSON 데이터 컬럼의 여유공간, JSON 데이터 있으면 항상 0|
+| 함수명 | 설명 | 예제 |
+| :----: |  :----: | ----------------------------|
+|JSON_VALID() |JSON 데이터의 유효성 검사| |
+|JSON_PRETTY() |들여쓰기를 포함해 보기 좋게 JSON 데이터 출력| |
+|JSON_OBJECT() |문자열 형태가 아닌 key, value 쌍으로 JSON 데이터 만들기| |
+|JSON_ARRAY() | JSON 데이터를 배열(Array) 형태로 작성 및 변환| |
+|JSON_EXTRACT() | 인라인 패스(->)와 같이 특정 값만 뽑아 추출| |
+|JSON_VALUE() |특정 값 추출, 출력 타입 정의 가능|| |
+|JSON_QUOTE() | 특정 값 추출시 값의 좌우에 큰따옴표 붙여서 출력| |
+|JSON_UNQUOTE() | 특정 값 추출시 값의 좌우에 출력되는 큰따옴표 제거| |
+|JSON_LENGTH() | JSON 데이터의 키 개수| |
+|JSON_DEPTH() | JSON 데이터의 깊이(계층)| |
+|JSON_KEYS() | JSON 데이터의 key들만 추출| |
+|JSON_TYPE() | JSON 데이터의 데이터 타입 출력| |
+|JSON_SEARCH() |특정값으로 JSON 패스(위치) 검색| select<br> json_search(info, 'one', 'kaka'),<br> info -> "$.ame[0].first"<br> from users;|
+|JSON_CONTAINS() |JSON 데이터에 특정 값의 존재 여부 확인| |
+|JSON_REPLACE() |JSON 데이터의 값 부분 변경| |
+|JSON_INSERT() | JSON 데이터에 특정 key, value 쌍을 추가| |
+|JSON_SET() |JSON 데이터에서 특정 key에 해당되는 값만 변경| |
+|JSON_REMOVE() |JSON 데이터의 특정 key, value 제거| |
+|JSON_MERGE() |기존 JSON 데이터에 값 추가, MySQL 8에서 deprecated됨| |
+|JSON_MERGE_PRESERVE() | JSON 데이터 특정 위치의 값 변경(기존 값 유지)| |
+|JSON_MERGE_PATCH() | JSON 데이터 특정 위치의 값 변경(기존 값 대치)| |
+|JSON_TABLE() | JSON 데이터를 테이블 형태로 정의| |
+|JSON_ARRAYAGG() |전체 JSON 데이터를 취합(통합)하여 배열로 출력| |
+|JSON_OBJECTAGG() | JSON 데이터를 취합(통합)하여 Object 형태로 출력| |
+|JSON_STORAGE_SIZE() | JSON 데이터가 차지하는 데이터 크기| |
+|JSON_STORAGE_FREE() | JSON 데이터 컬럼의 여유공간, JSON 데이터 있으면 항상 0| |
+
+## JSON_TABLE
+```
+select * from 
+  json_table(' [{"last": "aa", "first": "bb", "age": "xx"}, {"last": "cc", "first": "dd", "age":5}]',
+  '$[*]'
+  columns(
+		j_last varchar(10) path '$.last',
+        j_first varchar(10) path '$.first',
+        -- empty일 때 0, error일 때 -1로 대체 출력
+        j_age int path '$.age' default '0' on empty default '-1' on error,
+        -- age에 값이 있는경우 1, 없는경우 0 출력
+        j_age_exists tinyint exists path '$.age'
+    )
+  ) a;
+
+-- 일반 테이블과 JOIN이 가능
+select * from 
+  json_table(' [{"id":1,"last": "aa", "first": "bb", "age": "xx"}, {"id":2,"last": "cc", "first": "dd", "age":5}]',
+  '$[*]'
+  columns(
+		j_id int path '$.id',
+		j_last varchar(10) path '$.last',
+        j_first varchar(10) path '$.first',
+        -- empty일 때 0, error일 때 -1로 대체 출력
+        j_age int path '$.age' default '0' on empty default '-1' on error,
+        -- age에 값이 있는경우 1, 없는경우 0 출력
+        j_age_exists tinyint exists path '$.age'
+    )
+  ) j
+	inner join users u on j.id = u.id;
+```
 
 ## JSON의 INDEX 사용!
 1. 테이블 생성 시, JSON 컬럼의 Key에 대해서 색인을 생성
