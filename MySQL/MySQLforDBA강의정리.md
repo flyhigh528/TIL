@@ -190,6 +190,15 @@ https://www.youtube.com/watch?v=wfdgI5mM8Ew&t=2819s
   - MySQL 서버에 대한 연결 시도 횟수(성공 여부 포함)
 - **max_used_connections**
   - 서버가 시작된 이후 동시 사용중인 최대 연결 수입니다.
+```
+    -- 설정 확인
+    show variables like '%connect%';
+    -- 성능 분석 계산
+    show status like '%connect%';
+    Cache Miss Rate(%) =  Threads_created / Connections * 100
+    Connection Miss Rate(%) = Aborted_connects / Connections * 100
+    Connection Usage(%) = Threads_connected / max_connections * 100
+```
 - created_tmp_disk_tables
   - 명령문을 실행하는 동안 서버가 작성한 내부 온 디스크 임시 테이블 수
 - handler_read_first
