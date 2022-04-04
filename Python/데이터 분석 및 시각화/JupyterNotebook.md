@@ -11,3 +11,6 @@ webbrowser.register('chrome', None, webbrowser.GenericBrowser('C:\Program Files 
 c.NotebookApp.browser = 'chrome'
 ```
 7. jupyter notebook을 실행하여 크롬으로 잘 뜨는지 확인!
+
+
+

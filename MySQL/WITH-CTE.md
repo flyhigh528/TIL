@@ -9,6 +9,7 @@
     select d.dname, avg(e.salary) avgsal
       from Dept d inner join Emp e on d.id = e.dept
      group by d.id
+     
   ),
   MaxAvgSal AS (
     select * from AvgSal order by avgsal desc limit 1
