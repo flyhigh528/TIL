@@ -1,8 +1,8 @@
 # MySQL for DBA 강의정리
-https://www.youtube.com/watch?v=wfdgI5mM8Ew&t=2819s 
+https://www.youtube.com/watch?v=wfdgI5mM8Ew&t=2819s
 #
 ## MySQL 소개
-### 세계적으로 가장 많이 보급된 오픈소스 데이터베이스
+### 세계적으로 가장 많이 보급된 오픈소스 데이터베이스  
 ### web 애플리케이션 개발의 디폴트 표준
 - 가볍고 성능좋고 높은 신뢰성 제공
 - 대규모 OLTP 처리 부하에 최적화
