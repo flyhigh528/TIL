@@ -1,5 +1,5 @@
 # MySQL 뿌시기 Step1 🐧
-<img src="./mysql.png" width="700px" height="250px" title="MySQL Title" alt="MySQL_Dolphin"></img>
+<img src="./images/mysql.png" width="700px" height="250px" title="MySQL Title" alt="MySQL_Dolphin"></img>
 
 ## 1. 데이터베이스 & 유저 만들기
 

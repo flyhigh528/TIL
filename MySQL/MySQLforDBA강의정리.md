@@ -1,5 +1,5 @@
 # MySQL for DBA 강의정리
-https://www.youtube.com/watch?v=wfdgI5mM8Ew&t=2819s
+https://www.youtube.com/watch?v=wfdgI5mM8Ew&t=2819s 
 #
 ## MySQL 소개
 ### 세계적으로 가장 많이 보급된 오픈소스 데이터베이스
@@ -412,7 +412,7 @@ PERFORMANCE_SCHEMA를 통해 MySQL서버의 성능 지표 수집, 메모리에 �
 ## **인덱스 설계**
 조회 성능을 향상하기 위한 데이터 구조
 ## InnoDB_Clustered_Index
-<img src="./InnoDB_Clustered_Index.jpg"  title="InnoDB_Clustered_Index" alt="InnoDB_Clustered_Index"></img>
+<img src="./images/InnoDB_Clustered_Index.jpg"  title="InnoDB_Clustered_Index" alt="InnoDB_Clustered_Index"></img>
 Primary Key에 의해 데이터가 구성
 Primary Key의 값으로 Non-leaf 페이지를 구성
 모든 row값은 leaf 페이지에 구성
