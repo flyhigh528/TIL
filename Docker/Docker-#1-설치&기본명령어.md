@@ -23,6 +23,16 @@
       2. docker ps -a : 모든 컨테이너 목록 출력
       3. docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...] : 컨테이너 실행
       ``` docker run -d -p 8080:8080 -p 1521:1521 [이미지명]```
+      ```
+      $> docker search mysql
+$> docker pull mysql:5.7
+$> docker images
+$> docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=r! --name mysql5 mysql:5.7
+$> docker ps
+$> docker exec -it mysql5 bash
+#> mysql -u root -p
+
+      ```
          1. 옵션
          - -d	detached mode 흔히 말하는 백그라운드 모드
          - -p	호스트와 컨테이너의 포트를 연결 (포워딩)
