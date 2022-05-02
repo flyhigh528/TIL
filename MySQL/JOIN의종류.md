@@ -82,3 +82,25 @@ ON Sales.CountryID = Countries.ID
 - 두 테이블 데이터의 모든 조합
 - 테이블 1의 row * 테이블2의 row 개수만큼의 row를 가진 테이블 생성
 <img src="./images/cross_join.png"  width="600px" height="400px" title="Join" alt="Join"></img>
+
+
+### NESTED LOOP JOIN
+중첩 for문과 동일한 처리 방식
+기준 테이블이 OUTER 테이블
+데이터 테이블이 INNER 테이블
+INNER테이블의 인덱스가 없을 시 적절하지 않음
+건건이 데이터를 확인하기 떄문에 대량 테이블의 JOIN에는 적합하지 않음
+
+### SORT MERGE JOIN
+INNER테이블과 OUTER테이블을 SORTING 후 JOIN 실행
+INNER테이블에 적절한 인덱스가 없을시,
+Equel JOIN이 아닌 range JOIN 시 사용
+sorting 시 PGA 영역에서 진행되어 경합이 일어나지 않아 유리
+
+### HASH JOIN
+대용량 데이터 조인 시 유리
+배치에서 쓰면 좋다
+OUTER테이블을 Build Input으로 삼아서 HASH영역에 저장
+HASH영역이 PGA에 있기 떄문에 속도가 빠름
+JOIN 컬럼을 기준으로 Hash Function이 적용되기 때문에 key 컬럼에 중복이 없을수록 유리
+Random Access가 생기지 않음
