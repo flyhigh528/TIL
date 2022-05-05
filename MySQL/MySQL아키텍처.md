@@ -41,7 +41,7 @@ https://youtu.be/vQFGBZemJLQ
 <img src="./images/mysql쿼리실행과정.jpg" title="MySQL" alt="MySQL_arch"></img>
 
 ### 쿼리 캐시 (Query Cache)
-- SQL 실행 겨과를 메모리에 캐싱하는 역할
+- SQL 실행 결과를 메모리에 캐싱하는 역할
 - 동일 SQL 실행 시, 이전 결과를 즉시 반환
 - 테이블의 데이터가 변경되면 캐싱된 데이터 삭제 필요 (동시 처리 성능 저하)
 - MySQL 8.0부터 완전히 제거됨
@@ -128,3 +128,9 @@ https://youtu.be/vQFGBZemJLQ
 
 ## 스토리지 엔진 비교
 <img src="./images/MySQL엔진비교.JPG" title="MySQL" alt="MySQL_arch"></img>
+
+
+## Hard Parsing
+옵티마이저를 통해 실행계획을 도출하여 최적화를 거친 후 실행되는 경우
+## Soft Parsing
+라이브러리 캐시영역에서 실행계획을 가져다가 쓰는 경우

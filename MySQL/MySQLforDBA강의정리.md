@@ -374,13 +374,13 @@ PERFORMANCE_SCHEMA를 통해 MySQL서버의 성능 지표 수집, 메모리에 �
     SELECT @@global/session.변수명;
     SET @@sql_mode = 'TRADITIONAL';
     SET PERSIST max_connections = 1000;(MySQL 8.0)
-```
+```ㅇ
 #
 ## MySQL Databases 설계
 데이터 타입을 선택할 떄 **공간, 효율성, 운영** 문제 고려
 - PK를 AUTO_INCREMENT로 정의할 경우 INT 혹은 BIGINT 선택?
   - 데이터가 많이쌓일 것으로 예상되는 경우 BIGINT로 설계
-- Unsigned 대신에 Signed 
+- Unsigned 대신에 Signed
   - 월별 매출 건수를 계산 시, Unsigned인 경우 마이너스(-) 처리가 안됨
 - DECIMAL(n,m) 대신에 INT
   - 금액 계산부하가 많은 경우 INT가 효율이 좋음
